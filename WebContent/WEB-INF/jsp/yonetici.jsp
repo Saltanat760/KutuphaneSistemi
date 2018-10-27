@@ -8,5 +8,7 @@
 </head>
 <body>
 YÖNETİCİ PANELİ
+			<a href="${pageContext.request.contextPath }/kitapEkleme">Kitap Ekleme</a>
+			<a href="${pageContext.request.contextPath }/kiralananKitaplar">Kiralanan Kitaplar</a>
 </body>
 </html>

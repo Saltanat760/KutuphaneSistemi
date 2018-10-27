@@ -1,6 +1,7 @@
 package entity;
 
 public class Kitap {
+	private int kitapID;
 	private String kitapAdi;
 	private String yazarAdi;
 	private float kiralamaUcreti;
@@ -15,7 +16,8 @@ public class Kitap {
 				+ ", kiralanabilirMi=" + kiralanabilirMi + "]";
 	}
 
-	public Kitap(String kitapAdi, String yazarAdi, float kiralamaUcreti, int kiralanabilirMi) {
+	public Kitap(int kitapID,String kitapAdi, String yazarAdi, float kiralamaUcreti, int kiralanabilirMi) {
+		this.kitapID = kitapID;
 		this.kitapAdi = kitapAdi;
 		this.yazarAdi = yazarAdi;
 		this.kiralamaUcreti = kiralamaUcreti;
@@ -52,6 +54,14 @@ public class Kitap {
 
 	public void setKiralamaUcreti(float kiralamaUcreti) {
 		this.kiralamaUcreti = kiralamaUcreti;
+	}
+
+	public int getKitapID() {
+		return kitapID;
+	}
+
+	public void setKitapID(int kitapID) {
+		this.kitapID = kitapID;
 	}
 
 }

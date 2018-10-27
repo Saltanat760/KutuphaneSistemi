@@ -25,17 +25,22 @@
         <security:intercept-url pattern="/giris" access="permitAll"></security:intercept-url>
         <security:intercept-url pattern="/uyeOl" access="permitAll"></security:intercept-url>
         <security:intercept-url pattern="/odemeYap" access="isAuthenticated()"></security:intercept-url>
-        <security:intercept-url pattern="/kitapListesi" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/kitapListesi" access="permitAll"></security:intercept-url>
+        <security:intercept-url pattern="/kiraladigimKitaplar" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/kitapEkleme" access="hasRole('ADMIN')"></security:intercept-url>
         <security:intercept-url pattern="/yonetici" access="hasRole('ADMIN')"></security:intercept-url>
         <security:intercept-url pattern="/logout" access="permitAll"/>
         <security:form-login></security:form-login>
-        <security:logout logout-url="logout" logout-success-url="/welcome" />
+        <security:logout logout-url="/logout"
+        	logout-success-url="/" />
     </security:http>
     <security:authentication-manager>
         <security:authentication-provider>
-        	<security:jdbc-user-service data-source-ref="dataSource" />
+        	<security:jdbc-user-service data-source-ref="dataSource" /><security:password-encoder
+        		ref="passwordEncoder">
+</security:password-encoder>
         </security:authentication-provider>
     </security:authentication-manager>
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"></bean>
 
 </beans>

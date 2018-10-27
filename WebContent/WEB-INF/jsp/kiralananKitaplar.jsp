@@ -12,29 +12,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>KITAP LISTESI</h1>
+	<h1>KIRALANAN KITAP LISTESI</h1>
 <p>
+
+
 	<form action="${pageContext.request.contextPath }/kirala" method="post">
 	<table>
-		<tr>
-			<td></td>
+		<tr> 
+			<td>Kullanici Adi</td>
 			<td>Kitap Adi</td>
 			<td>Yazar Adi</td>
-			<td>Kiralama Ucreti</td>
+			<td>Kiralama Tarihi</td>
 		</tr>
 			<c:forEach var="kitap" items="${kitapListesi }">
 				<tr> 
-					<td><input type="checkbox" name="kitapID" value="${kitap.kitapID }"></td> 
-					<td>${kitap.kitapAdi }</td>
-					<td>${kitap.yazarAdi }</td>  
-					<td>${kitap.kiralamaUcreti }</td>
+<%-- 					<td><input type="checkbox" name="kitapID" value="${kitap.BOOK_ID }"></td>  --%>
+					<td>${kitap.USERNAME }</td>
+					<td>${kitap.TITLE }</td>
+					<td>${kitap.WRITER_NAME }</td>  
+					<td>${kitap.RENTED_DATE }</td>
 				</tr>
 			</c:forEach>
-		<tr>
+		<%-- <tr>
 			<td></td>
 			<td></td>
 			<td><sec:authorize access="isAuthenticated()"><input type="submit" value="Kirala"></sec:authorize></td>
-		</tr>
+		</tr> --%>
 		</table>
 		<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 	</form>

@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,19 +10,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-	HOSGELDINIZ
+	HOSGELDINIZ  
 	<p>
-		<a href="${pageContext.request.contextPath }/login">Giris Yap</a><br>
+		<sec:authorize access="isAnonymous()">
+			<a href="${pageContext.request.contextPath }/login">Giris Yap</a><br>
+			<br>
+		</sec:authorize> 
+		<sec:authorize access="isAnonymous()">
+			<a href="${pageContext.request.contextPath }/uyeOl">Uye Ol</a><br>
+			<br>
+		</sec:authorize> 
 		<a href="${pageContext.request.contextPath }/kitapListesi">Kitap Listesi</a><br> 
-		<a href="${pageContext.request.contextPath }/uyeOl">Uye Ol</a><br>
-
 		<sec:authorize access="isAuthenticated()">
-			<a href="${pageContext.request.contextPath }/odemeYap">Odeme Yap</a>
+			<a href="${pageContext.request.contextPath }/kiraladigimKitaplar">Kiraladigim Kitaplar</a>
 			<br>
-		</sec:authorize>
+		</sec:authorize> 
 		<sec:authorize access="hasRole('ADMIN')">
-			<a href="${pageContext.request.contextPath }/kitapEkleme">Kitap Ekleme</a>
+			<a href="${pageContext.request.contextPath }/yonetici">Yonetici Sayfasi</a>
 			<br>
-		</sec:authorize>
+		</sec:authorize> 
+		
+		
+		<c:url var="logoutUrl" value="/logout"></c:url>
+		
+		<form action="${logoutUrl }" method="post">
+			<input type="submit" value="Log out !">
+			<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+		
+		</form>
 </body>
 </html>

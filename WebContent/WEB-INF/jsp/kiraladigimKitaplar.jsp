@@ -12,9 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>KITAP LISTESI</h1>
+	<h1>KITAP LISTEM</h1>
 <p>
-	<form action="${pageContext.request.contextPath }/kirala" method="post">
+	<form action="${pageContext.request.contextPath }/odemeYap" method="post">
 	<table>
 		<tr>
 			<td></td>
@@ -33,7 +33,7 @@
 		<tr>
 			<td></td>
 			<td></td>
-			<td><sec:authorize access="isAuthenticated()"><input type="submit" value="Kirala"></sec:authorize></td>
+			<td><sec:authorize access="isAuthenticated()"><input type="submit" value="Öde"></sec:authorize></td>
 		</tr>
 		</table>
 		<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>

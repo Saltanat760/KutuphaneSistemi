@@ -28,6 +28,7 @@ Kitap Ekleme
 			<td><input type="submit" value="Ekle"></td>
 		</tr>
 	</table>
+		<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 
 </form>
 
